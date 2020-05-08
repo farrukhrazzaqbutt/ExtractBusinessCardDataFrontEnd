@@ -1,0 +1,38 @@
+<div *ngIf="currentCardScanner" class="edit-form">
+    <h4>Card Scanner</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Card Scanner</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentCardScanner.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentCardScanner.description"
+          name="description"
+        />
+      </div>
+    </form>
+  
+    <button class="badge badge-danger mr-2" (click)="deleteCardScanner()">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success" (click)="updateCardScanner()">
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  
+  <div *ngIf="!currentCardScanner">
+    <br />
+    <p>Cannot access this Scan Card...</p>
+  </div>

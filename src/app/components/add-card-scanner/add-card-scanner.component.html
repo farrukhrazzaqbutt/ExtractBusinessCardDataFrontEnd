@@ -1,0 +1,36 @@
+<div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="CardScanner.title"
+          name="title"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Upload Scan Image</label>
+        <input
+          class="form-control"
+          type="file"
+          id="path_image"
+          (change)="selectFile($event)"
+          required
+          [(ngModel)]="CardScanner.path_image"
+          name="path_image"
+        />
+      </div>
+  
+      <button (click)="saveCardScanner()" class="btn btn-success">Submit</button>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <hr><hr>
+      <button class="btn btn-success btn-block" (click)="newCardScanner()">Add</button>
+    </div>
+  </div>

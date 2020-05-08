@@ -1,0 +1,71 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Scan Cards List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let item of CardScanner; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCardScanner(item, i)"
+        >
+          {{ item.title }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllCardScanner()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentCardScanner">
+        <h4>Scan Cards</h4>
+        <div>
+          <label><strong>Title:</strong></label> {{ currentCardScanner.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentCardScanner.description }}
+        </div>
+        <div>
+          <label><strong>Mobile Numbers:</strong></label>
+          {{ currentCardScanner.mobile }}
+        </div>
+        <div>
+          <label><strong>E-mail:</strong></label>
+          {{ currentCardScanner.email }}
+        </div>
+        <div>
+          <label style="display: inline-block;"><strong>URL:</strong>{{ currentCardScanner.image }}</label>
+          
+        </div>
+        <div>
+          <label><strong>Card:</strong></label>
+          <img src="http://127.0.0.1:8000{{ currentCardScanner.image }}" width="150%" height="320px">
+        </div>
+      </div>
+  
+      <div *ngIf="!currentCardScanner">
+        <br />
+        <h5>Please click on a Scan Card for Details...</h5>
+      </div>
+    </div>
+  </div>
